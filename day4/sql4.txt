@@ -1,0 +1,70 @@
+operators
+arthimetic operators
++ select sal+1000 from emp;
+- select sal-500 from emp;
+*  select ename,sal*12 as annual_sal from emp;
+/ select ename , sal/2 as halfmonth_sal from emp;
+% select 10%3 from dual;
+
+comparsion operators
+=
+select * from emp where deptno=10;
+select * from emp where job='manager';
+
+<> or !=
+select * from emp where job<>'clerk';
+select * from emp where deptno!=10;
+
+<
+select * from emp where sal<2000;
+>
+select * from emp where sal>2000;
+<=
+select * from emp where deptno<=20;
+>=
+select * from emp where deptno>=20;
+
+logical operators
+and
+select * from emp where sal<2000 and deptno=20;
+
+or 
+select * from emp where job='salesman' or deptno=10;
+
+NOT
+select * from emp where not job='salesman' and not deptno=10;
+
+special operators
+in operator - it will check whether we have data in 
+set of values
+select * from emp where deptno in (20,10);
+select * from emp where job in ('clerk','manager');
+
+not in 
+select * from emp where job not in ('clerk','manager');
+
+is NULL
+select * from emp where comm is null;
+select * from emp where mgr is null;
+
+is not null
+select * from emp where comm is not null;
+
+between
+select * from emp where sal between 1500 and 2500;
+
+not between
+select * from emp where sal not between 1500 and 2500;
+
+
+wildcard operators
+
+like operator 
+% - matching multiple
+select * from emp where ename like "s%"; --starts with
+select * from emp where ename like "%s"; --ends with
+select * from emp where ename like "%s%"; --if it contains
+
+_ for matching a single character
+select * from emp where ename like "f__d";
+select * from emp where ename like "_a__";

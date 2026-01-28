@@ -1,0 +1,133 @@
+datatypes
+1) varchar(size)
+it is used to create variable length string
+
+syntax  
+name varchar(20)
+email varchar(30)
+city varchar(20)
+
+varchar wont occupy space for empty slots
+
+
+2) char(size)
+it is used to create fixed length string
+
+syntax
+pincode char(6)
+phno char(10)
+
+it will ocupy space even it is having empty slots
+
+3) int
+it is used to store the whole numbers (negative and postive)
+
+syntax
+id int
+age int
+price int
+
+4) decimal - it is used to store decimal numbers
+with a precision and scale
+
+18.46
+precision-4
+scale-2
+
+syntax
+rating decimal(3,1)
+grade decimal(2,1)
+
+5) boolean-it is used to store true or false
+but in a format of 1 or 0
+
+syntax
+admin boolean
+active boolean
+feestatus boolean
+
+6) date- it is used to store the date in a format of
+'YYYY-MM-DD'
+
+syntax
+doj date
+dob date
+
+year_ofpassedof year
+examination_month month 
+
+appointment datetime
+last_login timestamp
+
+7) text
+it is used to large data content
+
+syntax
+description text
+content text
+
+
+ddl-data definiton language
+it is used define and manage the structure  of
+the table,database ,users
+
+1) create
+it is used to create the database,table,user 
+
+2) show 
+it is used to list out the databases and tables
+
+3) desc
+it is used to show the description of table -like 
+tatal columns and  datatypes and rules
+
+4) alter & rename
+it is used to modify the structure of a table
+
+5) drop 
+it is used to remove database and tables 
+
+6) truncate
+it is used to clear the values in a table but not
+a strcture 
+
+
+1) create
+syntax
+CREATE TABLE tbname (col datatype,col2 datatype);
+
+ex 
+create table students (id int,name varchar(20));
+
+2) show
+ex
+show tables;
+
+3) desc
+ex
+desc students;
+
+4) alter - add ,modify,drop and rename
+
+add a new column
+ALTER TABLE students ADD COLUMN city varchar(20);
+
+modifying a column datatype
+ALTER TABLE students MODIFY COLUMN city char(10);
+
+drop a column
+ALTER TABLE students DROP COLUMN city;
+
+rename a column
+ALTER TABLE students RENAME COLUMN name to stdname;
+
+rename a table
+ALTER TABLE students RENAME  to std;
+
+5) drop
+ex
+drop table std;
+
+6) truncate
+ex
+truncate table std;

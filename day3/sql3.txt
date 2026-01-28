@@ -1,0 +1,71 @@
+dml -data manipulation language
+it is used to deal with values of an table
+
+create database day3;
+use day3;
+create table std (id int, name varchar(20),city varchar(20));
+
+1) insert
+how to insert a row
+syntax
+insert into tbname (col1,col2) values (val1,val2);
+
+ex
+insert into std (id,name,city) values (1,'john','hyd');
+
+how to insert mutliple VALUES
+insert into std (id,name,city) values (2,'jessy','hyd'), (3,'jack','banglore');
+
+how to insert few row values
+insert into std (id,name) values (1,'john');
+
+2) update
+syntax
+update tbname set col1=val1,col2=val2 where condition;
+
+ex
+update std set name='jane' where id=3;
+
+3) delete
+syntax
+delete from tbame where cond;
+
+ex 
+delete from std where id=1;
+
+ommitting where clause in delete it will behave like
+truncate
+delete from std;
+
+
+dql - data query language 
+it is used to retrieve the date from database
+
+syntax
+select * from tbname;
+
+ex
+select * from std;
+
+few columns
+select id ,name from std;
+
+aliasing
+select id as student_id , name as student_name from std;
+
+
+
+create table demo (
+    id int,
+    name varchar(20),
+    pincode char(6),
+    rating decimal(2,1),
+    appointment datetime,
+    active boolean,
+    last_active timestamp,
+    description text
+);
+
+insert into demo values (1,'john','530001',
+3.4,'2020-10-10 10:15:30',1,current_timestamp,
+'some large content');

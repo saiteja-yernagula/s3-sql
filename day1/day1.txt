@@ -1,0 +1,18 @@
+how many ways we can operate mysql
+1) workbench
+2) mysql command line client
+3) mysql shell
+
+install mysql server and mysql shell
+
+how to operate mysql shell
+1) \sql
+2) \c root@localhost:3306
+3) password ---Y or N
+
+databases
+1) show database;
+2) create database dbname;
+3) use dbname;
+4) select database();
+5) drop database dbname;
