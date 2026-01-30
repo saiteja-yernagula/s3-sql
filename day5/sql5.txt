@@ -1,0 +1,90 @@
+clauses 
+it allows us to sort, group , condition 
+and limit the data
+
+1) where clauses - select ,delete and update
+it is used to specify a condition
+select * from emp where job='manager';
+delete from emp where emno=2398;
+update emp set ename='john' where empno=8277;
+
+2) distinct 
+it is used to display the unique set of values
+select distinct(deptno) from emp;
+select distinct(job) from emp;
+
+3) order by
+it is used to sort the columns in asscending and 
+descending order
+
+asscending order
+select * from emp order by deptno;
+select * from emp order by sal;
+descending order
+select * from emp order by deptno desc;
+
+4) limit
+it is used to specify the no of records to return
+
+select * from emp limit 5;
+
+highest salary in a emp table
+select * from emp order by sal desc limit 1 ;
+
+5) offset
+it is used to skip the records
+2nd highest salary
+select * from emp order by sal desc limit 1 offset 1;
+
+3rd highest salary
+select * from emp order by sal desc limit 1 offset 2;
+
+select * from emp order by sal desc limit 10 ;
+select * from emp order by sal desc limit 10 offset 10;
+select * from emp order by sal desc limit 10 offset 20;
+
+shorthand                                 offse, limi
+select * from emp order by sal desc limit 20, 10  ;
+
+6) group by
+it is used to group the similar values as a group
+it is mostly used with aggregating functions
+
+count the no of emp in each job role
+ select job,count(job) from emp group by job;
+
+max salaries in each department no
+select deptno,max(sal) from emp group by deptno;
+7) having
+
+functions 
+1) single row functions
+each row will return one output
+7 rows ---7 outputs
+
+2) multi row function - aggregate functions
+it will take multiple rows as a inputs and 
+returns single value
+7 rows- 1 output
+
+min sal
+select min(sal) from emp;
+
+max
+select max(sal) from emp;
+
+sum
+select sum(sal) from emp;
+
+avg
+select avg(sal) from emp;
+
+count
+select count(ename) from emp;
+select count(*) from emp;
+select count(comm) from emp;-4,it will ignore null
+
+note 
+we cannot mention non aggregating column with aggregating function
+aggregate funcs will ignore values
+
