@@ -1,0 +1,59 @@
+
+
+constraints
+Constraints are the rules applied to table columns
+ to enforce data integrity.
+
+1) not null
+Ensures that a column cannot have a NULL value.
+
+ex
+create table std (id int, name varchar(20) not null);
+
+ insert into std (id,name) values (1,'john');--inserted
+ insert into std (name) values ('jane');--inserted
+ insert into std (id) values (1);--will throw error
+
+2) check 
+create table std (id int,name 
+               varchar(20),age int check(age>18));
+
+insert into std values (1,'john',23);--inserted 
+insert into std values (1,'jane',11);--throw error
+
+3) unique
+create table std (id int ,name varchar(20),adharno
+ int unique);
+
+insert into std values (1,'john',1234);--inserted
+insert into std values (1,'john',1234);--throws error
+insert into std values (1,'john',null);--inserted
+                                        but null
+
+4) default 
+create table std (id int,name varchar(20), 
+company varchar(20) default "vector");
+
+insert into std (id,name) values (1,'john'); 
+                  --inserted default value
+
+insert into std (id,name,company) values
+  (3,'prasanna','infosys');---inserted customized value
+
+5) primary key
+unique+not null
+it is used to identify a row uniquely
+
+create table std (id int primary key,name varchar(20));
+ insert into std values (1,'john');--inserted
+ insert into std values (1,'john');--throws error
+
+ auto_increment
+create table std (id int primary key auto_increment,name varchar(20));
+
+ insert into std (id,name) values (1,'john');--inserted 1
+ insert into std (name) values ('jessy');---inserted 2
+ insert into std (id,name) values (10,'john');--inserted 10
+ insert into std (name) values ('jessy');---inserted 11 
+
+
