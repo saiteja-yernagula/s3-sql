@@ -1,0 +1,101 @@
+constraints
+not null
+check
+unique
+default
+primary key 
+
+foriegn key
+FOREIGN KEY
+Purpose: Ensures referential integrity by linking two tables.
+Note: The referenced table should have a PRIMARY KEY.
+Foreign Key column can have duplicates and NULL values.
+Parent table: The table with a PRIMARY KEY. and foreign key 
+Child table: The table referencing the PRIMARY KEY.
+
+child table
+create table dept (deptid int primary key ,depname varchar(20));
+insert into dept (depid,depname) values (101,'trainers') ,
+  (102,'sales'),(103,'placements');
+
+emp table
+create table emp (id int primary key, name varchar(20),depid int, 
+         foreign key(depid) references dept(depid));
+insert into emp values (1,'john',101);
+insert into emp values (10,'john',107);--throws error
+insert into emp values (10,'john',102);---inserted
+insert into dept values (107,'bda');--modified the child table
+insert into emp values (9,'john',107);--inserted 
+
+drop table dept;---we cannot delete
+
+
+drop table emp;
+
+drop table dept;
+
+
+
+
+Joins in MySQL
+Joins in MySQL are used to retrieve data from multiple tables
+ based on a related column. 
+ 
+ The different types of joins :
+ inner join
+ right join
+ left join
+ full outer join
+ cross join
+ self join
+
+
+
+ 1. INNER JOIN
+The INNER JOIN keyword selects records that have matching values in both tables.
+If there is no match, the rows are excluded from the result set.
+This is the most commonly used join in SQL.
+It is useful when we only need records that have corresponding entries in both tables.
+
+
+select * from emp e inner join dept d on e.deptno=d.deptno;
+
+get the names and location
+select e.ename , d.loc from emp e inner join dept d on e.deptno=d.deptno;
+
+
+1) Display student_id who registered under anitha
+select * from trainers t inner join enrollments e on
+    t.trainer_id=e.trainer_id  where t.trainer_name='anita';
+
+
+
+queries
+Queries on joins
+1) Display student_id who registered under anitha
+2) Display student_id who registered for python
+3) Display who was teaching the course having highest fees
+4) Display sid,cid,cname,fees of each std
+5) Display studentid,total fees paid by each student
+6) Display coursename,total fees paid for each course
+7) Display sid,trianername, subject,fee for all students
+Advanced
+1) find the student names who have taken python
+2)find the count of no of students in each course
+3)find the students names who are training under anitha
+4)find the trainers who has maximum enrolled students
+5)find the total fees of every trainer based on total student under his course
+6) Find courses with more than 1 student
+7) Find students who enrolled in more than one course
+8) Find trainers who collected fees more than 20,000
+9) Find students who paid more than 20,000
+10) Find courses whose total collection is more than 30,000
+
+
+
+
+
+
+
+
+
