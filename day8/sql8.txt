@@ -39,19 +39,17 @@ drop table dept;
 
 Joins in MySQL
 Joins in MySQL are used to retrieve data from multiple tables
- based on a related column. 
+based on a related column. 
  
- The different types of joins :
- inner join
- right join
- left join
- full outer join
- cross join
- self join
+The different types of joins :
+inner join
+right join
+left join
+full outer join
+cross join
+self join
 
-
-
- 1. INNER JOIN
+1. INNER JOIN
 The INNER JOIN keyword selects records that have matching values in both tables.
 If there is no match, the rows are excluded from the result set.
 This is the most commonly used join in SQL.

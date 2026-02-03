@@ -1,0 +1,57 @@
+1) Display student_id who registered under anitha
+
+2) Display student_id who registered for python
+
+select e.student_id from enrollments e join courses c 
+on e.course_id=c.course_id where 
+c.course_name='python';
+
+3) Display who was teaching the course having highest fees
+select * from trainers t join courses c on t.expertise=c.course_name order by c.fee desc limit 1;
+
+
+ 4) Display sid,cid,cname,fees of each std
+
+select e.student_id ,e.course_id,c.course_name,c.fee from enrollments e join courses c  on e.course_id=c.course_id;
+
+5) Display studentid,total fees paid by each student
+select e.student_id ,sum(c.fee) from enrollments e join courses c on e.course_id=c.course_id group by e.student_id;
+
+6)Display coursename,total fees paid for each course
+select c.course_name ,sum(c.fee) from enrollments e join courses c on e.course_id=c.course_id group by c.course_name;
+
+7) Display sid,trianername, subject,fee for all students
+
+select e.student_id,t.trainer_name,c.course_name,c.fee from enrollments e join courses c on e.course_id=c.course_id join  trainers t on t.trainer_id = e.trainer_id;
+
+
+
+
+1) find the student names who have taken python
+select s.student_name from enrollments e join trainers t on t.trainer_id=e.trainer_id join students s on s.student_id=e.student_id where t.expertise='python';
+
+2)find the count of no of students in each course
+select c.course_name, count(*) from enrollments e join courses c on c.course_id=e.course_id group by c.course_name ;
+
+3)find the students names who are training under anitha
+select s.student_name from enrollments e join trainers t on t.trainer_id=e.trainer_id join students s on s.student_id=e.student_id where t.trainer_name='anita';
+
+4)find the trainers who has maximum enrolled students
+select t.trainer_name ,count(*) from trainers t join enrollments e on t.trainer_id=e.trainer_id group by t.trainer_name   order by count(*) desc limit 1;
+
+5)find the total fees of every trainer based on
+ total student under his course
+select t.trainer_name,sum(c.fee) from trainers t join enrollments e on t.trainer_id=e.trainer_id join courses c on c.course_id=e.course_id group by t.trainer_name ;
+
+6) Find courses with more than 1 student
+select c.course_name,count(*) from courses c join enrollments e on e.course_id=c.course_id group by c.course_name having count(*)>1;
+
+7) Find students who enrolled in more than
+ one course
+select s.student_name,count(*) from students s join enrollments e on s.student_id=e.student_id join courses c on c.course_id=e.course_id group by s.student_name having count(*)>1;
+
+
+8) Find trainers who collected fees more than 20,000
+9) Find students who paid more than 20,000
+10) Find courses whose total collection
+ is more than 30,000
