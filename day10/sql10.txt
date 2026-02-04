@@ -1,0 +1,101 @@
+
+
+1) LEFT JOIN 
+The LEFT JOIN returns all records from the left 
+table and the matched records from the right table.
+
+ select * from dept d left join emp   
+   e on d.deptno=e.deptno;
+
+2) RIGHT JOIN 
+The RIGHT JOIN returns all records from the right 
+table and the matched records from the left table.
+If there is no match, NULL values will be returned
+select * from emp e right join dept   
+   d on d.deptno=e.deptno;
+
+3) full outer JOIN
+Returns all rows when there is a match in either table.
+MySQL does not support FULL OUTER JOIN , 
+so we use a combination of LEFT JOIN and RIGHT JOIN
+ with UNION.
+
+select * from dept d left join emp   
+   e on d.deptno=e.deptno 
+   UNION
+   select * from dept d right join emp   
+   e on d.deptno=e.deptno;
+
+ 4) CROSS JOIN (Cartesian Join)
+The CROSS JOIN returns the Cartesian product
+ of the two tables.
+Every row from the first table is combined 
+with every row from the second table.
+If table1 has m rows and table2 has n rows,
+ the result set will have m * n rows.
+
+  select * from emp cross join dept;
+
+5)self join
+A SELF JOIN is when a table is joined with itself.
+Table aliases are necessary  
+It can be an INNER JOIN, LEFT JOIN, or RIGHT JOIN.
+
+queries
+LEFT JOIN
+2) All students + enrollments-left inclusive
+select * from students s left join enrollments e on 
+s.student_id=e.student_id;
+
+3) Students with NO enrollment -left exclusive
+ select * from students s left join enrollments e on 
+s.student_id=e.student_id where e.enroll_id is null;
+
+RIGHT JOIN
+4) enrollments +All courses
+select * from enrollments e right join courses c on
+e.course_id=c.course_id;
+
+5) Courses with NO students -right exclusive
+select * from enrollments e right join courses c on
+e.course_id=c.course_id where e.student_id is null;
+
+ FULL JOIN
+6) All Trainers +All Enrollments
+select * from trainers t left join enrollments e on
+t.trainer_id=e.trainer_id
+union
+select * from trainers t right join enrollments e on
+t.trainer_id=e.trainer_id;
+
+
+SELF JOIN
+7) Student with their Mentor Name
+select  s1.student_name, s2.student_name as mentor 
+from students s1 join students s2  on 
+s1.mentor_id=s2.student_id;
+
+8) Students who doesn’t have a mentor
+select  * from students s1 left join students s2  on 
+s1.mentor_id=s2.student_id where s1.mentor_id is null;
+
+9) Mentor with Number of Students
+select s2.student_name as mentor ,count(*) from students
+ s1 join students s2  on s1.mentor_id=s2.student_id
+  group by s2.student_name ;
+
+CROSS JOIN
+10) Get employees whose salary is greater than FORD’s salary
+select * from emp e1 cross join emp e2 where 
+e2.ename='ford' and e1.sal>e2.sal;
+
+
+
+
+
+
+
+
+
+
+
