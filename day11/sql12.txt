@@ -1,0 +1,72 @@
+overall 
+1) Find employees who have the same salary as the highest salary in department 10.
+2) Find employees who have the same salary as any employee in department 20.
+
+Subqueries
+1)Employees who work in the Sales department
+single row subquery
+a)where clause
+select ename from emp where 
+deptno=(select deptno from dept where dname='sales');
+                                 
+b)select clause
+select ename,sal,(select avg(sal) from emp) as
+   avg from emp;
+
+c)from clause 
+select  avg(sal) from (select ename ,sal from emp) 
+as e;
+
+multi row sub query
+Find employees earning more than the
+lowest salary in department 30.
+ any returns true if it satisfies atleast one          
+ select ename from emp where sal >
+     any(select sal from emp where deptno=30);
+
+Find employees earning more than all salaries 
+in department 20
+ all returns true only if it satisfies all           
+ select ename from emp where sal > 
+    all(select sal from emp where deptno=30);
+
+
+2)Employees earning more than the average salary
+select ename from emp where 
+     sal>(select avg(sal) from emp);
+
+
+3)Employees who work in the same department 
+as SMITH
+select ename from emp  where deptno=
+   (select deptno from emp where ename='smith');
+
+4)Highest paid employee
+select ename from emp where 
+   sal=(select max(sal) from emp);
+
+5)Employees who work in NEW YORK
+select ename from emp where deptno=(select deptno from dept where loc='new york');
+
+6)Employees whose salary is greater than FORD’s salary
+select ename from emp where sal>(select sal from emp where ename='ford');
+
+1).Students who enrolled in Python
+select student_name from students where student_id in (select student_id from enrollments where course_id=101);
+
+2).Students who enrolled in any course
+select student_name from students where student_id in (select student_id from enrollments);
+
+3).Students who did NOT enroll anywhere
+select student_name from students where student_id not in (select student_id from enrollments);
+4).Courses that cost more than average fee
+select course_name from courses where fee >(select avg(fee) from courses);
+
+
+
+
+6).Show which course have highest course fee
+7).Show which course have lowest course fee
+8).Students living in same city as “Ramesh”
+9).Courses cheaper than Python course
+10).Show students who joined a course after 1 Feb 2024
